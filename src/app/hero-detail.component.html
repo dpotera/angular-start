@@ -1,0 +1,26 @@
+<div *ngIf="hero">
+  <h4>{{hero.name}} details:</h4>
+  <div class="card">
+    <div class="card-content">
+      <div><label>id: </label>{{hero.id}}</div>
+      <div><label>name: </label>{{hero.name}}</div>
+    </div>
+  </div>
+  <div class="card" *ngIf="hero">
+    <div class="card-content">
+      <span class="card-title">Edit</span>
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Name" id="name" type="text" class="validate"
+                 [(ngModel)]="hero.name">
+          <label class="active" for="name">Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Name" id="id" type="text" class="validate"
+                 [(ngModel)]="hero.id">
+          <label class="active" for="id">ID</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
