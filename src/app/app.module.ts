@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { HeroDetailComponent } from './heroes/shared/hero-detail.component';
 
 @NgModule({
   declarations: [
