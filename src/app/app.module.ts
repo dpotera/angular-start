@@ -5,6 +5,7 @@ import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
 import { HeroDetailComponent } from './heroes/shared/hero-detail.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HeroDetailComponent } from './heroes/shared/hero-detail.component';
   imports: [
     BrowserModule,
     FormsModule,
-    MaterializeModule
+    MaterializeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
