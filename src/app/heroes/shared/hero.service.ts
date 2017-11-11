@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 
 import { Hero } from '../hero/hero';
 import { HEROES } from '../mock/mock-heroes';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class HeroService {
-  getHeroes(): Promise<Hero[]> {
-    return Promise.resolve(HEROES);
-  }
-
-  getHeroesSlowly = (): Promise<Hero[]> => {
-    return new Promise(resolve => setTimeout(() => resolve(this.getHeroes()), 2000));
+  getHeroes(): Observable<Hero[]> {
+    return of(HEROES);
   }
 }
