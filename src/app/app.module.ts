@@ -5,12 +5,17 @@ import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { HeroesComponent } from './heroes/heroes.component';
+import { HeroesComponent } from './heroes/component/heroes.component';
+import { MessageService } from './message/service/message.service';
+import { MessageComponent } from './message/component/message.component';
+import { HeroDetailComponent } from './heroes/shared/hero-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroDetailComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +23,7 @@ import { HeroesComponent } from './heroes/heroes.component';
     MaterializeModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

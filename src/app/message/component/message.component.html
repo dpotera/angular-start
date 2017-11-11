@@ -1,0 +1,17 @@
+<div *ngIf="messagesService.messages.length">
+
+  <div class="row">
+    <h2>Messages</h2>
+    <button class="clear waves-effect waves-light btn" (click)="messagesService.clear()">
+      <i class="material-icons left">clear</i>
+      clear
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m6 l3" *ngFor="let message of messagesService.messages">
+      {{message}}
+    </div>
+  </div>
+
+</div>
