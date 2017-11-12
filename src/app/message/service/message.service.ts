@@ -5,7 +5,7 @@ export class MessageService {
   messages: String[] = [];
 
   add(message: String) {
-    this.messages.push(message);
+    this.messages.unshift(message);
   }
 
   clear() {

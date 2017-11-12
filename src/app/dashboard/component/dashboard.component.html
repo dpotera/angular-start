@@ -1,9 +1,17 @@
-<h4>Top heroes</h4>
+<h4>
+  <i class="material-icons left medium">poll</i>
+  Top heroes
+</h4>
 
 <div class="row">
   <div *ngFor="let hero of heroes" class="col s3">
-    <div class="card-panel hoverable grey lighten-5 z-depth-1">
-      <p>{{hero.name}}</p>
-    </div>
+    <a routerLink="/detail/{{hero.id}}" class="card hoverable blue-grey darken-1 z-depth-1">
+      <span class="card-content white-text">
+        <span class="card-title">
+          <i class="material-icons left">person</i>
+          {{hero.name}}
+        </span>
+      </span>
+    </a>
   </div>
 </div>
