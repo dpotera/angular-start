@@ -10,6 +10,7 @@ import { MessageService } from './message/service/message.service';
 import { MessageComponent } from './message/component/message.component';
 import { HeroDetailComponent } from './heroes/detail/hero-detail.component';
 import { DashboardComponent } from './dashboard/component/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DashboardComponent } from './dashboard/component/dashboard.component';
     BrowserModule,
     FormsModule,
     MaterializeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
