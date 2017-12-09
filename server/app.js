@@ -17,11 +17,6 @@ const heroSchema = new Schema({
     name: String
 });
 const Hero = mongoose.model('Hero', heroSchema);
-const dominik = new Hero({_id: 1, name: 'Dominik'});
-// dominik.save((err, dominik) => {
-//     if (err) throw err;
-//     console.log(`${dominik.name} saved in Database`);
-// });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -43,9 +38,11 @@ app.get('/heroes', (req, res) => {
 // const heroes = require('./data/heroes.json');
 app.get('/heroes/:id', (req, res) => {
     Hero.findOne({_id: req.params.id}, (err, heroes) => {
-        if (err) throw err;
-        res.send(heroes);
-        console.log(heroes);
+        if (err) responseError(err, res);
+        else {
+            res.send(heroes);
+            console.log(heroes);
+        }
     });
 });
 
@@ -56,11 +53,8 @@ app.post('/heroes', (req, res) => {
         id: req.body.id,
         name: req.body.name
     }).save((err, hero) => {
-        if (err) {
-            res.writeHead(500, {'Content-Type': 'text/html'});
-            res.end(err.message);
-            console.log(err.message);
-        } else {
+        if (err) responseError(err, res);
+        else {
             console.log(`${hero.name} saved in Database!`);
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.end(`${hero.name} saved in Database!`);
@@ -70,10 +64,8 @@ app.post('/heroes', (req, res) => {
 
 app.delete('/heroes/:id', (req, res) => {
     Hero.remove({_id: req.params.id.toString()}, (err) => {
-        if (err) {
-            res.writeHead(500, {'Content-Type': 'text/html'});
-            res.end(err.message);
-        } else {
+        if (err) responseError(err, res);
+        else {
             console.log(`Hero id:${req.params.id} deleted from Database!`);
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.end(`Hero id:${req.params.id} deleted from Database!`);
@@ -81,4 +73,8 @@ app.delete('/heroes/:id', (req, res) => {
     })
 });
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+function responseError(err, res) {
+    console.log(err.message);
+    res.writeHead(400, {'Content-Type': 'text/html'});
+    res.end(err.message);
+}
