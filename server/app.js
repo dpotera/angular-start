@@ -29,9 +29,11 @@ app.get('/', (req, res) => res.send('Hello World!'));
 // const heroes = require('./data/heroes.json');
 app.get('/heroes', (req, res) => {
     Hero.find((err, heroes) => {
-        if (err) throw err;
-        res.send(heroes);
-        console.log(heroes);
+        if (err) responseError(err, res);
+        else {
+            res.send(heroes);
+            console.log(heroes);
+        }
     });
 });
 
@@ -78,3 +80,5 @@ function responseError(err, res) {
     res.writeHead(400, {'Content-Type': 'text/html'});
     res.end(err.message);
 }
+
+app.listen(3000, () => console.log('Example app listening on port 3000!'));
